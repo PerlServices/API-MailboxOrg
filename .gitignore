@@ -1,0 +1,4 @@
+*.sw*
+/API-MailboxOrg-*
+/.build*
+/.vscode*
