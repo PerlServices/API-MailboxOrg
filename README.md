@@ -1,6 +1,7 @@
 [![Kwalitee status](https://cpants.cpanauthors.org/dist/API-MailboxOrg.png)](https://cpants.cpanauthors.org/dist/API-MailboxOrg)
-[![GitHub issues](https://img.shields.io/github/issues/API-MailboxOrg/issues.svg)](https://github.com/API-MailboxOrg/issues/issues)
-[![CPAN Cover Status](https://cpancoverbadge.perl-services.de/API-MailboxOrg-1.0.0)](https://cpancoverbadge.perl-services.de/API-MailboxOrg-1.0.0)
+[![GitHub issues](https://img.shields.io/github/issues/perlservices/API-MailboxOrg.svg)](https://github.com/perlservices/API-MailboxOrg/issues)
+[![CPAN Cover Status](https://cpancoverbadge.perl-services.de/API-MailboxOrg-1.0.1)](https://cpancoverbadge.perl-services.de/API-MailboxOrg-1.0.1)
+[![Cpan license](https://img.shields.io/cpan/l/API-MailboxOrg.svg)](https://metacpan.org/release/API-MailboxOrg)
 
 # NAME
 
@@ -8,7 +9,7 @@ API::MailboxOrg - Perl library to work with the API for the Mailbox.org API
 
 # VERSION
 
-version 1.0.0
+version 1.0.1
 
 # SYNOPSIS
 
@@ -84,13 +85,13 @@ The distribution is contained in a Git repository, so simply clone the
 repository
 
 ```
-$ git clone https://github.com/perlservices/API-MailboxOrg/issues.git
+$ git clone git://github.com/perlservices/API-MailboxOrg.git
 ```
 
 and change into the newly-created directory.
 
 ```
-$ cd issues
+$ cd API-MailboxOrg
 ```
 
 The project uses [`Dist::Zilla`](https://metacpan.org/pod/Dist::Zilla) to

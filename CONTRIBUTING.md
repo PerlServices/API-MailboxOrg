@@ -5,13 +5,13 @@ The distribution is contained in a Git repository, so simply clone the
 repository
 
 ```
-$ git clone https://github.com/perlservices/API-MailboxOrg/issues.git
+$ git clone git://github.com/perlservices/API-MailboxOrg.git
 ```
 
 and change into the newly-created directory.
 
 ```
-$ cd issues
+$ cd API-MailboxOrg
 ```
 
 The project uses [`Dist::Zilla`](https://metacpan.org/pod/Dist::Zilla) to
