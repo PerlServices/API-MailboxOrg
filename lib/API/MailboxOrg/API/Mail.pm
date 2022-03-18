@@ -12,7 +12,8 @@ use strict;
 use warnings;
 
 use Moo;
-use Types::Standard qw(Enum Str Int);
+use Types::Standard qw(Enum Str Int InstanceOf ArrayRef);
+use API::MailboxOrg::Types qw(HashRefRestricted Boolean);
 use Params::ValidationCompiler qw(validation_for);
 
 extends 'API::MailboxOrg::APIBase';
@@ -35,11 +36,11 @@ my %validators = (
             additional_cloud_quota => { type => Str, optional => 1 },
             first_name             => { type => Str, optional => 0 },
             last_name              => { type => Str, optional => 0 },
-            inboxsave              => { type => Str, optional => 0 },
-            forwards               => { type => Str, optional => 0 },
+            inboxsave              => { type => Boolean, optional => 0 },
+            forwards               => { type => ArrayRef, optional => 0 },
             memo                   => { type => Str, optional => 1 },
-            catchall               => { type => Str, optional => 1 },
-            create_own_context     => { type => Str, optional => 1 },
+            catchall               => { type => Boolean, optional => 1 },
+            create_own_context     => { type => Boolean, optional => 1 },
             title                  => { type => Str, optional => 1 },
             birthday               => { type => Str, optional => 1 },
             position               => { type => Str, optional => 1 },
@@ -51,8 +52,8 @@ my %validators = (
             phone                  => { type => Str, optional => 1 },
             fax                    => { type => Str, optional => 1 },
             cell_phone             => { type => Str, optional => 1 },
-            recover                => { type => Str, optional => 1 },
-            skip_welcome_mail      => { type => Str, optional => 1 },
+            recover                => { type => Boolean, optional => 1 },
+            skip_welcome_mail      => { type => Boolean, optional => 1 },
 
         },
     ),
@@ -96,12 +97,12 @@ my %validators = (
             additional_cloud_quota => { type => Str, optional => 1 },
             first_name             => { type => Str, optional => 1 },
             last_name              => { type => Str, optional => 1 },
-            inboxsave              => { type => Str, optional => 1 },
-            forwards               => { type => Str, optional => 1 },
-            aliases                => { type => Str, optional => 1 },
+            inboxsave              => { type => Boolean, optional => 1 },
+            forwards               => { type => ArrayRef, optional => 1 },
+            aliases                => { type => ArrayRef, optional => 1 },
             alternate_mail         => { type => Str, optional => 1 },
             memo                   => { type => Str, optional => 1 },
-            active                 => { type => Str, optional => 1 },
+            active                 => { type => Boolean, optional => 1 },
             title                  => { type => Str, optional => 1 },
             birthday               => { type => Str, optional => 1 },
             position               => { type => Str, optional => 1 },

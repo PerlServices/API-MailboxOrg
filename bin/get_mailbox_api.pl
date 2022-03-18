@@ -168,7 +168,8 @@ use strict;
 use warnings;
 
 use Moo;
-use Types::Standard qw(Enum Str Int);
+use Types::Standard qw(Enum Str Int InstanceOf ArrayRef);
+use API::MailboxOrg::Types qw(HashRefRestricted Boolean);
 use Params::ValidationCompiler qw(validation_for);
 
 extends 'API::MailboxOrg::APIBase';
@@ -213,16 +214,36 @@ sub _get_validator ( $name, $info, $class ) {
 
     my $params = '';
     for my $param ( @params_list ) {
-       my $type = $param->{type} eq 'integer' ? 'Int' : 'Str';
+       my $p_name = $param->{name};
+
+       my %map = (
+           integer => 'Int',
+           boolean => 'Boolean',
+           string  => 'Str',
+           array   => 'ArrayRef',
+       );
+
+       my $type = $map{ $param->{type} } || 'Str';
 
        if ( $param->{enum} && $param->{enum}->@* ) {
-           $type = sprintf "Enum[qw(%s)]", join ' ', $param->{enum}->@*;
+           my ($pre, $post) = $type eq 'ArrayRef' ? ( $type . '[', ']') : ('','');
+
+           $type = sprintf "%sEnum[qw(%s)]%s", $pre, (join ' ', $param->{enum}->@*), $post;
+       }
+
+       my %restricted = (
+           tarifflimits => 'plan',
+       );
+
+       if ( $restricted{ $p_name } ) {
+           my ($base) = grep { $_->{name} eq $restricted{ $p_name } } @params_list;
+           $type = sprintf 'HashRefRestricted[qw(%s)]', join ' ', $base->{enum}->@*;
        }
 
        $params .= sprintf "%s%s%s => { type => %s, optional => %s },\n",
            ' ' x 12,
-           $param->{name},
-           ' ' x ( $max_length - length $param->{name} ),
+           $p_name,
+           ' ' x ( $max_length - length $p_name ),
            $type,
            ( $param->{required} ? 0 : 1 );
     }

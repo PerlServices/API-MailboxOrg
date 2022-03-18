@@ -12,7 +12,8 @@ use strict;
 use warnings;
 
 use Moo;
-use Types::Standard qw(Enum Str Int);
+use Types::Standard qw(Enum Str Int InstanceOf ArrayRef);
+use API::MailboxOrg::Types qw(HashRefRestricted Boolean);
 use Params::ValidationCompiler qw(validation_for);
 
 extends 'API::MailboxOrg::APIBase';

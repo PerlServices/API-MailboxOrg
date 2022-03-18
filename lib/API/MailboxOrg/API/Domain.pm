@@ -12,7 +12,8 @@ use strict;
 use warnings;
 
 use Moo;
-use Types::Standard qw(Enum Str Int);
+use Types::Standard qw(Enum Str Int InstanceOf ArrayRef);
+use API::MailboxOrg::Types qw(HashRefRestricted Boolean);
 use Params::ValidationCompiler qw(validation_for);
 
 extends 'API::MailboxOrg::APIBase';
@@ -31,7 +32,7 @@ my %validators = (
             domain                => { type => Str, optional => 0 },
             password              => { type => Str, optional => 0 },
             context_id            => { type => Str, optional => 1 },
-            create_new_context_id => { type => Str, optional => 1 },
+            create_new_context_id => { type => Boolean, optional => 1 },
             memo                  => { type => Str, optional => 1 },
 
         },
@@ -61,7 +62,7 @@ my %validators = (
             domain                => { type => Str, optional => 0 },
             password              => { type => Str, optional => 1 },
             context_id            => { type => Str, optional => 1 },
-            create_new_context_id => { type => Str, optional => 1 },
+            create_new_context_id => { type => Boolean, optional => 1 },
             memo                  => { type => Str, optional => 1 },
 
         },

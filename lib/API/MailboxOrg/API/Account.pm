@@ -12,7 +12,8 @@ use strict;
 use warnings;
 
 use Moo;
-use Types::Standard qw(Enum Str Int);
+use Types::Standard qw(Enum Str Int InstanceOf ArrayRef);
+use API::MailboxOrg::Types qw(HashRefRestricted Boolean);
 use Params::ValidationCompiler qw(validation_for);
 
 extends 'API::MailboxOrg::APIBase';
@@ -30,7 +31,7 @@ my %validators = (
             account      => { type => Str, optional => 0 },
             password     => { type => Str, optional => 0 },
             plan         => { type => Enum[qw(basic profi profixl reseller)], optional => 0 },
-            tarifflimits => { type => Str, optional => 1 },
+            tarifflimits => { type => HashRefRestricted[qw(basic profi profixl reseller)], optional => 1 },
             memo         => { type => Str, optional => 1 },
 
         },
@@ -59,7 +60,7 @@ my %validators = (
             address_payment_zipcode    => { type => Str, optional => 1 },
             address_payment_town       => { type => Str, optional => 1 },
             av_contract_accept_name    => { type => Str, optional => 1 },
-            tarifflimits               => { type => Str, optional => 1 },
+            tarifflimits               => { type => HashRefRestricted[qw(basic profi profixl reseller)], optional => 1 },
 
         },
     ),

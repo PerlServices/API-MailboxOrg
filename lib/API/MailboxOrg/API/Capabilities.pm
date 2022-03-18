@@ -12,7 +12,8 @@ use strict;
 use warnings;
 
 use Moo;
-use Types::Standard qw(Enum Str Int);
+use Types::Standard qw(Enum Str Int InstanceOf ArrayRef);
+use API::MailboxOrg::Types qw(HashRefRestricted Boolean);
 use Params::ValidationCompiler qw(validation_for);
 
 extends 'API::MailboxOrg::APIBase';
@@ -28,7 +29,7 @@ my %validators = (
     'set' => validation_for(
         params => {
             mail         => { type => Str, optional => 0 },
-            capabilities => { type => Enum[qw(MAIL_SPAMPROTECTION MAIL_BLACKLIST MAIL_BACKUPRECOVER MAIL_OTP MAIL_PASSWORDRESET_SMS BMBO_VIDEOCHAT)], optional => 0 },
+            capabilities => { type => ArrayRef[Enum[qw(MAIL_SPAMPROTECTION MAIL_BLACKLIST MAIL_BACKUPRECOVER MAIL_OTP MAIL_PASSWORDRESET_SMS BMBO_VIDEOCHAT)]], optional => 0 },
 
         },
     ),
