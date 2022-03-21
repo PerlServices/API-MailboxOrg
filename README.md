@@ -1,6 +1,6 @@
 [![Kwalitee status](https://cpants.cpanauthors.org/dist/API-MailboxOrg.png)](https://cpants.cpanauthors.org/dist/API-MailboxOrg)
 [![GitHub issues](https://img.shields.io/github/issues/perlservices/API-MailboxOrg.svg)](https://github.com/perlservices/API-MailboxOrg/issues)
-[![CPAN Cover Status](https://cpancoverbadge.perl-services.de/API-MailboxOrg-1.0.1)](https://cpancoverbadge.perl-services.de/API-MailboxOrg-1.0.1)
+[![CPAN Cover Status](https://cpancoverbadge.perl-services.de/API-MailboxOrg-1.0.2)](https://cpancoverbadge.perl-services.de/API-MailboxOrg-1.0.2)
 [![Cpan license](https://img.shields.io/cpan/l/API-MailboxOrg.svg)](https://metacpan.org/release/API-MailboxOrg)
 
 # NAME
@@ -9,7 +9,7 @@ API::MailboxOrg - Perl library to work with the API for the Mailbox.org API
 
 # VERSION
 
-version 1.0.1
+version 1.0.2
 
 # SYNOPSIS
 
